@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>kinokuniya</title>
+        <link rel="stylesheet" href="css/top.css"><!--編集する-->
+        <link rel="stylesheet" type="text/css" href="css/slick.css"/><!--編集しない-->
+        <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/><!--編集しない-->
+        <script src="js/jquery-3.7.1.min.js"></script><!--編集しない--> 
+        <script type="text/javascript" src="js/slick.min.js"></script>
+        <script src="js/main.js"></script><!--編集する--> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="header-inner">
+                <!-- ハンバーガー -->
+                <button class="menu-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- ロゴ -->
+                <div class="logo">
+                    <a href="index.html"><img src="top-images/logo.png" alt="紀伊國屋書店"></a>
+                </div>
+
+                <!-- 検索＋アイコン -->
+                <div class="nav-right">
+                    <form class="search-form">
+                        <input type="text" placeholder="検索">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+
+                    <div class="icon">
+                        <div class="human">
+                            <a href="loginpage.html">
+                                <img src="top-images/humanicon.png" alt="ログイン">
+                                <span>ログイン</span>
+                            </a>
+                        </div>
+                        <div class="cart">
+                            <a href="#">
+                                <img src="top-images/cart.png" alt="カート">
+                                <span>カート</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- グローバルナビ -->
+            <ul class="ddmenu" id="nav-menu">
+                <li class="has-submenu"><a href="#">ジャンル</a>
+                    <ul class="submenu">
+                        <li><a href="#">和書</a></li>
+                        <li><a href="#">電子書籍</a></li>
+                        <li><a href="#">洋書</a></li>
+                        <li><a href="#">雑誌・マガジン</a></li>
+                        <li><a href="#">DVD・CD</a></li>
+                        <li><a href="#">文具・雑貨・特選品</a></li>
+                        <li><a href="#">ベストセラー</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">電子書籍ストア</a></li>
+                <li><a href="#">イベント</a></li>
+                <li><a href="#">おすすめの本</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">法人のお客様へ</a></li>
+            </ul>
+
+            <!-- 🔽 モバイル用オーバーレイ -->
+           <div class="overlay" id="overlay">
+                <ul>
+                    <li class="accordion">
+                        <a href="#">ジャンル ▼</a>
+                        <ul class="submenu">
+                            <li><a href="#">和書</a></li>
+                            <li><a href="#">電子書籍</a></li>
+                            <li><a href="#">洋書</a></li>
+                            <li><a href="#">雑誌・マガジン</a></li>
+                            <li><a href="#">DVD・CD</a></li>
+                            <li><a href="#">文具・雑貨・特選品</a></li>
+                            <li><a href="#">ベストセラー</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">店舗一覧</a></li>
+                    <li><a href="#">電子書籍ストア</a></li>
+                    <li><a href="#">イベント</a></li>
+                    <li><a href="#">おすすめの本</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                    <li><a href="#">法人のお客様へ</a></li>
+                </ul>
+                <div class="close">×</div>
+            </div>
+
+            <!-- モバイル用ナビバー -->
+            <div class="nav-bar-mobile">
+                <!-- 検索フォーム -->
+                <form class="search-form">
+                    <input type="text" placeholder="検索">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+                <!-- アイコンエリア -->
+                <div class="icon-area">
+                    <div class="icon-mobile">
+                        <a href="loginpage.html">
+                            <img src="top-images/humanwhite.png" alt="ログイン">
+                            <span>ログイン</span>
+                        </a>
+                    </div>
+                    <div class="icon-mobile">
+                        <a href="#">
+                            <img src="top-images/cartwhite.png" alt="カート">
+                            <span>カート</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="slider4-wrap"><!-- メインビジュアル -->
+            <ul class="slider-4" id="js-slider-4">
+                <li><a href="#"><img src="top-images/mainvisual24.png" alt="キノベス"></a></li>
+                <li><a href="#"><img src="top-images/mainvisual19.png" alt="キノナビ"></a></li>
+                <li><a href="#"><img src="top-images/mainvisual22.png" alt="キノベスキッズ"></a></li>
+                <li><a href="#"><img src="top-images/mainvisual7.png" alt="kinoppy"></a></li>
+                <li><a href="#"><img src="top-images/mainvisual11.png" alt="kinoppyコミック"></a></li>
+            </ul>
+            <div class="progress_bar">
+                <div class="bar" id="js-progressBar"></div>
+            </div>
+        </div>
+
+        <div class="recomend">
+            <h2><span>おすすめの本</span></h2>
+            <p class="subtitle">紙</p>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper1.jpg" alt="ドラゴンボール"></a>
+                    <p class="title">【予約受付中】ドラゴンボール全42巻セットダブルカバーボックス</p>
+                    <p class="price">¥31,799</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper2.jpg" alt="世界の歴史"></a>
+                    <p class="title">【数量限定】集英社版・学習まんが世界の歴史全巻セット（全18巻）</p>
+                    <p class="price">¥19,800</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper4.jpg" alt="hazama"></a>
+                    <p class="title">【7月下旬入荷予定】ha|za|ma 惹きずり込まれる運命のミニショルダーバッグ</p>
+                    <p class="price">¥5,489</p>
+                </div>
+                <div class="item">
+                    <a href="2nd.html"><img src="top-images/books/paper3.jpg" alt="コーダ"></a>
+                    <p class="title">「コーダ」のぼくが見る世界―聴こえない親のもとに生まれて</p>
+                    <p class="price">¥1,760</p>
+                </div>
+            </div>
+            <div class="c-btn">more</div>
+
+            <p class="subtitle">電子書籍</p>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/books/digital1.jpg" alt="キマイラ聖獣"></a>
+                    <p class="title">ソノラマノベルスキマイラ聖獣</p>
+                    <p class="price">¥1,300</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/digital2.jpg" alt="梅の実るまで"></a>
+                    <p class="title">梅の実るまで―茅野淳之介幕末日乗ー</p>
+                    <p class="price">¥1,980</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/digital3.jpg" alt="文春e-book"></a>
+                    <p class="title">文春e-book女の子たち風船爆弾をつくる</p>
+                    <p class="price">¥2,600</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/digital4.jpg" alt="コーダ"></a>
+                    <p class="title">陸将、海将と振り返る 昭和の大戦 - クリティカルシンキング -</p>
+                    <p class="price">¥1,980</p>
+                </div>
+            </div>
+            <div class="c-btn">more</div>
+
+            <p class="subtitle">洋書</p>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westernbook1.jpg" alt="『大きな鳥にさらわれないよう』"></a>
+                    <p class="title">【電子書籍あり】川上弘美『大きな鳥にさらわれないよう』（英訳）...</p>
+                    <p class="price">¥5,238</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westernbook2.jpg" alt="呪術廻戦"></a>
+                    <p class="title">【予約】芥見下々『呪術廻戦　30』（繁体字中文訳）サイン入...</p>
+                    <p class="price">¥3,795</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westernbook3.jpg" alt="Mouche & Friends"></a>
+                    <p class="title">Mouche & Friends : Seamless Toys to Knit and Love</p>
+                    <p class="price">¥5,237</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westernbook4.jpg" alt="butter"></a>
+                    <p class="title">柚木麻子『BUTTER』（英訳）Butter</p>
+                    <p class="price">¥2,436</p>
+                </div>
+            </div>
+            <div class="c-btn">more</div>
+
+            <p class="subtitle">洋書(電子書籍)</p>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westernbook1.jpg" alt="『大きな鳥にさらわれないよう』"></a>
+                    <p class="title">【電子書籍あり】川上弘美『大きな鳥にさらわれないよう』（英訳）...</p>
+                    <p class="price">¥5,238</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westerndigital2.jpg" alt="Mark Twain"></a>
+                    <p class="title">Mark Twain</p>
+                    <p class="price">¥3,322</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westerndigital3.jpg" alt="Tractors 1st"></a>
+                    <p class="title">Standard Catalog of John Deere Tractors 1st</p>
+                    <p class="price">1,844</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/westernbook4.jpg" alt="アメリカ中西部の歴史ハンドブック"></a>
+                    <p class="title">オックスフォード版アメリカ中西部の歴史ハンドブック</p>
+                    <p class="price">¥28,457</p>
+                </div>
+            </div>
+            <div class="c-btn">more</div>
+
+            <p class="subtitle">グッズ</p>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/books/goods1.jpg" alt="ゴリラ裁判の日"></a>
+                    <p class="title">【著者サイン本】ゴリラ裁判の日 （著者：須藤古都離さんのサイン...</p>
+                    <p class="price">¥891</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/goods2.jpg" alt="薬屋のひとりごと"></a>
+                    <p class="title">【一括購入】薬屋のひとりごと 1巻～6巻＜ノベル版＞</p>
+                    <p class="price">¥3,322</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/goods3.jpg" alt="Tractors 1st"></a>
+                    <p class="title">ブックポーチ　紀伊國屋書店オリジナルグッズ</p>
+                    <p class="price">¥1,650</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/goods4.jpg" alt="本の虫トート"></a>
+                    <p class="title">ヨシタケシンスケ×紀伊國屋書店　本の虫トート　スクエア　ネイビー</p>
+                    <p class="price">¥2,200</p>
+                </div>
+            </div>
+            <div class="c-btn">more</div>
+        </div>
+
+        <div class="event">
+            <h2>イベント</h2>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event1.jpg" alt="不等辺五角形"></a>
+                    <p class="title">『不等辺五角形』刊行記念　貫井徳郎さん　トークショー＆サイン会...</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event2.jpg" alt="野球入門"></a>
+                    <p class="title">【3階アカデミック・ラウンジ】紀伊國屋書店×光文社新書ビジネス...</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event3.jpg" alt="オブローモフの夢"></a>
+                    <p class="title">【Zoom配信】紀伊國屋書店Kinoppy&光文社古典新訳文庫読...</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event4.jpg" alt="クジラがしんだら"></a>
+                    <p class="title">『クジラがしんだら』スペシャルトーク▶️イベント動画 (約70分)...</p>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event5.jpg" alt="京極夏彦"></a>
+                    <p class="title">紀伊國屋書店×印刷博物館　京極夏彦館長就任記念キャンペーン.........</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event6.png" alt="新聞コーナー"></a>
+                    <p class="title">新聞の書評コーナーで紹介された本：週末掲載 - 2025年5月9-11....</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event7.jpg" alt="ドラゴンボール"></a>
+                    <p class="title">2026年2月4日（水）発売予定『DRAGON BALL 全42巻セット..</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/event/event8.png" alt="キノベス2025"></a>
+                    <p class="title">キノベス！紀伊國屋書店スタッフが全力でおすすめするベスト30 ........</p>
+                </div>
+            </div>
+            <div class="c-btn">more</div>
+        </div>
+
+        <div class="news">
+            <h2>お知らせ</h2>
+            
+            <div class="news-items">
+
+                <div class="news-item">
+                    <img src="top-images/news/news1.png" alt="BOOKS KINOKUNIYA">
+                    <div class="news-content">
+                        <p class="news-body">
+                            株式会社紀伊國屋書店と京王電鉄株式会社による、京王書籍販売株式会社の株式譲渡
+                        </p>
+                        <p class="news-date">2025.03.12</p>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <img src="top-images/news/news1.png" alt="BOOKS KINOKUNIYA">
+                    <div class="news-content">
+                        <p class="news-body">
+                            大阪大学 附属図書館全4館に世界最高水準※1の顔認証を導入、国立大学初※2、入館ゲート..
+                        </p>
+                        <p class="news-date">2025.03.12</p>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <img src="top-images/news/news1.png" alt="BOOKS KINOKUNIYA">
+                    <div class="news-content">
+                        <p class="news-title">イオンモール川口前川店</p> <!-- 店名（なくてもOK） -->
+                        <p class="news-body">
+                            2025年6月に「紀伊國屋書店イオンモール川口前川店」をオープン
+                        </p>
+                        <p class="news-date">2025.03.12</p>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <img src="top-images/news/news1.png" alt="BOOKS KINOKUNIYA">
+                    <div class="news-content">
+                        <p class="news-title">大手町ビル店</p> <!-- 店名（なくてもOK） -->
+                        <p class="news-body">
+                            2025年3月に「紀伊國屋書店 大手町ビル店」をリニューアルオープン
+                        </p>
+                        <p class="news-date">2025.03.12</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="c-btn">more</div>
+
+        <div class="check">
+            <h2>最近チェックした商品</h2>
+            <div class="items">
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper1.jpg" alt="ドラゴンボール"></a>
+                    <p class="title">【予約受付中】ドラゴンボール全42巻セットダブルカバーボックス</p>
+                    <p class="price">¥31,799</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper2.jpg" alt="世界の歴史"></a>
+                    <p class="title">【数量限定】集英社版・学習まんが世界の歴史全巻セット（全18巻）</p>
+                    <p class="price">¥19,800</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper3.jpg" alt="hazama"></a>
+                    <p class="title">【7月下旬入荷予定】ha|za|ma 惹きずり込まれる運命のミニショルダーバッグ</p>
+                    <p class="price">¥5,489</p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="top-images/books/paper4.jpg" alt="コーダ"></a>
+                    <p class="title">「コーダ」のぼくが見る世界―聴こえない親のもとに生まれて</p>
+                    <p class="price">¥1,760</p>
+                </div>
+        </div>
+        <div class="c-btn">more</div>
+
+        <footer>
+            <!-- 上段：青背景 -->
+            <div class="footer-top">
+                <div class="inner">
+                    <div class="sns-icons">
+                        <a href="#"><img src="top-images/media/line-me.png" alt="LINE"></a>
+                        <a href="#"><img src="top-images/media/twitter_x_new_logo_square_x_icon_256075.png" alt="X"></a>
+                        <a href="#"><img src="top-images/media/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="top-images/media/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="top-images/media/3721679-youtube_108064.png" alt="YouTube"></a>
+                        <a href="#"><img src="top-images/media/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="top-images/media/note.png" alt="Note"></a>
+                    </div>
+
+                    <div class="footer-links">
+                        <div class="column">
+                            <h4>コンテンツ</h4>
+                            <ul>
+                                <li><a href="#">ホーム</a></li>
+                                <li><a href="#">電子書籍ストア</a></li>
+                                <li><a href="#">イベント</a></li>
+                                <li><a href="#">店舗一覧</a></li>
+                                <li><a href="#">法人のお客様へ</a></li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>インフォメーション</h4>
+                            <ul>
+                                <li><a href="#">会社案内</a></li>
+                                <li><a href="#">お知らせ</a></li>
+                                <li><a href="#">採用情報</a></li>
+                                <li><a href="#">お問い合わせ</a></li>
+                                <li><a href="#">個人情報保護方針</a></li>
+                                <li><a href="#">会員サービス利用規約</a></li>
+                                <li><a href="#">特定商法利用規約に基づく表示</a></li>
+                                <li><a href="#">免責事項</a></li>
+                                <li><a href="#">著作権について</a></li>
+                                <li><a href="#">広告媒体のご案内</a></li>
+                                <li><a href="#">アフィリエイトのご案内</a></li>
+                                <li><a href="#">カスタマーハラスメントに対する基本方針</a></li>
+                                <li><a href="#">Kinokuniya in the world</a></li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>ジャンル</h4>
+                            <ul>
+                                <li><a href="#">おすすめの本</a></li>
+                                <li><a href="#">和書</a></li>
+                                <li><a href="#">電子書籍</a></li>
+                                <li><a href="#">雑誌・マガジン</a></li>
+                                <li><a href="#">DVD・CD</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.inner -->
+            </div><!-- /.footer-top -->
+
+            <!-- 下段：白背景 -->
+            <div class="footer-bottom">
+                <div class="inner">
+                    <div class="footer-logos">
+                        <img src="top-images/footer/privacymark.png" alt="プライバシーマーク">
+                        <img src="top-images/footer/ABJ.png" alt="ABJマーク">
+                    </div>
+
+                    <p class="company-info">
+                        東京都公安委員会　古物商許可番号 304366100901<br>
+                        株式会社 紀伊國屋書店　本社：東京都新宿区新宿3-17-7
+                    </p>
+
+                    <p class="disclaimer">
+                        このウェブサイトの内容の一部または全部を無断で複製、転載することを禁じます。<br>
+                        当社店舗一覧等を掲載されるサイトにおかれましては、最新の情報を当ウェブサイトにてご参照のうえ常時メンテナンスください。<br>
+                        Copyright © KINOKUNIYA COMPANY LTD.
+                    </p>
+                </div><!-- /.inner -->
+            </div><!-- /.footer-bottom -->
+        </footer>
+
+    </body>
+</html>
