@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>kinokuniya2ndpage</title>
+        <link rel="stylesheet" href="css/top.css"><!--編集する-->
+        <link rel="stylesheet" type="text/css" href="css/slick.css"/><!--編集しない-->
+        <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/><!--編集しない-->
+        <script src="js/jquery-3.7.1.min.js"></script><!--編集しない--> 
+        <script type="text/javascript" src="js/slick.min.js"></script>
+        <script src="js/main.js"></script><!--編集する--> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+
+    <body>
+         <header>
+            <div class="header-inner">
+                <!-- ハンバーガー -->
+                <button class="menu-btn" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- ロゴ -->
+                <div class="logo">
+                    <a href="index.html"><img src="top-images/logo.png" alt="紀伊國屋書店"></a>
+                </div>
+
+                <!-- 検索＋アイコン -->
+                <div class="nav-right">
+                    <form class="search-form">
+                        <input type="text" placeholder="検索">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+
+                    <div class="icon">
+                        <div class="human">
+                            <a href="loginpage.html">
+                                <img src="top-images/humanicon.png" alt="ログイン">
+                                <span>ログイン</span>
+                            </a>
+                        </div>
+                        <div class="cart">
+                            <a href="#">
+                                <img src="top-images/cart.png" alt="カート">
+                                <span>カート</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- グローバルナビ -->
+            <ul class="ddmenu" id="nav-menu">
+                <li class="has-submenu"><a href="#">ジャンル</a>
+                    <ul class="submenu">
+                        <li><a href="#">和書</a></li>
+                        <li><a href="#">電子書籍</a></li>
+                        <li><a href="#">洋書</a></li>
+                        <li><a href="#" class="narrow-line">電子洋書・<br>洋書・洋古書</a></li>
+                        <li><a href="#">雑誌・マガジン</a></li>
+                        <li><a href="#">DVD・CD</a></li>
+                        <li><a href="#" class="narrow-line">文具・雑貨・<br>特選品</a></li>
+                        <li><a href="#">ベストセラー</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">電子書籍ストア</a></li>
+                <li><a href="#">イベント</a></li>
+                <li><a href="#">おすすめの本</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">法人のお客様へ</a></li>
+            </ul>
+
+            <!-- モバイル用オーバーレイ -->
+           <div class="overlay" id="overlay">
+                <ul>
+                    <li class="accordion">
+                        <a href="#">ジャンル ▼</a>
+                        <ul class="submenu">
+                            <li><a href="#">和書</a></li>
+                            <li><a href="#">電子書籍</a></li>
+                            <li><a href="#">洋書</a></li>
+                            <li><a href="#">電子洋書・洋書・洋古書</a></li>
+                            <li><a href="#">雑誌・マガジン</a></li>
+                            <li><a href="#">DVD・CD</a></li>
+                            <li><a href="#">文具・雑貨・特選品</a></li>
+                            <li><a href="#">ベストセラー</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">店舗一覧</a></li>
+                    <li><a href="#">電子書籍ストア</a></li>
+                    <li><a href="#">イベント</a></li>
+                    <li><a href="#">おすすめの本</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                    <li><a href="#">法人のお客様へ</a></li>
+                </ul>
+                <div class="close">×</div>
+            </div>
+
+            <!-- モバイル用ナビバー -->
+            <div class="nav-bar-mobile">
+                <!-- 検索フォーム -->
+                <form class="search-form">
+                    <input type="text" placeholder="検索">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+                <!-- アイコンエリア -->
+                <div class="icon-area">
+                    <div class="icon-mobile">
+                        <a href="loginpage.html">
+                            <img src="top-images/humanwhite.png" alt="ログイン">
+                            <span>ログイン</span>
+                        </a>
+                    </div>
+                    <div class="icon-mobile">
+                        <a href="#">
+                            <img src="top-images/cartwhite.png" alt="カート">
+                            <span>カート</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="breadcrumb">
+            <ul>
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">和書</a></li>
+                <li><a href="#">文芸</a></li>
+                <li><a href="#">文学</a></li>
+            </ul>
+        </nav>
+
+        <main class="product-detail">
+            <div class="product-container">
+                <!-- 左側：商品画像 -->
+                 <div class="product-image">
+                    <img src="top-images/books/paper3.jpg" alt="コーダ">
+                 </div>
+                 <!-- 右側：商品情報 -->
+                  <div class="product-info">
+                    <h1 class="product-title">コーダのぼくが見る世界</h1>
+                    <p class="product-price">￥1,760</p>
+                    <p class="product-text">もし、親の耳が聴こえたら――なんて、想像もつかなかった。</p>
+                    <!-- 数量選択 -->
+                    <div class="product-quantity">
+                        <label for="quantity">数量</label>
+                        <input type="number" id="quantity" min="1" value="1">
+                    </div>
+                    <!-- ボタン -->
+                     <div class="product-buttons">
+                        <button class="btn cart-btn">カートに追加する</button>
+                        <button class="btn favorite-btn">♡お気に入り登録</button>
+                     </div>
+
+                     <hr>
+
+                     <!-- 詳細情報 -->
+                     <div class="book-detail">
+                        <p class="publisher">出版社：紀伊国屋書店</p>
+                        <p class="publisher">著者：五十嵐　大</p>
+
+                        <div class="summary">
+                            ときに手話を母語とし、ときにヤングケアラーとみなされて、コーダは、ろう者とも聴者（ちょうしゃ）とも違うアイデンティティをもち、複雑な心を抱えて揺れ動く。
+                            日々の通訳、聴こえない親とのコミュニケーション、母語としての手話、手話歌や「感動ポルノ」との付き合い方、マイノリティとして生きること。作家である著者が、幼少期の葛藤や自身のなかにある偏見と向き合いながら、コーダの目で見た世界を綴る。
+                        </div>
+
+                        <div class="book-info">
+                            <span>商品コード:9784314012089</span>
+                            <span>NDC分類:913.6</span>
+                            <span>Cコード:C0095</span>
+                        </div>
+                     </div>
+                  </div>
+            </div>
+
+            <div class="customer-wrap">
+                <h2 class="customer">お客様へのおすすめ</h2>
+
+                <div class="items-customer">
+                    <div class="item-customer">
+                        <a href="#"><img src="top-images/books/digital1.jpg" alt="キマイラ"></a>
+                        <p class="title">ソノラマノベルスキマイラ聖獣</p>
+                        <p class="price">¥1,300</p>
+                    </div>
+                    <div class="item-customer">
+                        <a href="#"><img src="top-images/books/goods1.jpg" alt="ゴリラ"></a>
+                        <p class="title">【著者サイン本】ゴリラ裁判の日 （著者：須藤古都離さんのサイン...</p>
+                        <p class="price">¥891</p>
+                    </div>
+                    <div class="item-customer">
+                        <a href="#"><img src="top-images/books/westerndigital2.jpg" alt="Mark Twain"></a>
+                        <p class="title">Mark Twain</p>
+                        <p class="price">¥3,322</p>
+                    </div>
+                    <div class="item-customer">
+                        <a href="#"><img src="top-images/books/westernbook4.jpg" alt="BUTTER"></a>
+                        <p class="title">柚木麻子『BUTTER』（英訳）Butter</p>
+                        <p class="price">¥2,436</p>
+                    </div>
+
+                    <div class="item-customer">
+                        <a href="#"><img src="top-images/books/digital4.jpg" alt="キノベス2025"></a>
+                        <p class="title">陸将、海将と振り返る 昭和の大戦 - クリティカルシンキング -</p>
+                        <p class="price">¥1,980</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <!-- 上段：青背景 -->
+            <div class="footer-top">
+                <div class="inner">
+                    <div class="sns-icons">
+                        <a href="#"><img src="top-images/media/line-me.png" alt="LINE"></a>
+                        <a href="#"><img src="top-images/media/twitter_x_new_logo_square_x_icon_256075.png" alt="X"></a>
+                        <a href="#"><img src="top-images/media/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="top-images/media/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="top-images/media/3721679-youtube_108064.png" alt="YouTube"></a>
+                        <a href="#"><img src="top-images/media/tiktok.png" alt="TikTok"></a>
+                        <a href="#"><img src="top-images/media/note.png" alt="Note"></a>
+                    </div>
+
+                    <div class="footer-links">
+                        <div class="column">
+                            <h4>コンテンツ</h4>
+                            <ul>
+                                <li><a href="#">ホーム</a></li>
+                                <li><a href="#">電子書籍ストア</a></li>
+                                <li><a href="#">イベント</a></li>
+                                <li><a href="#">店舗一覧</a></li>
+                                <li><a href="#">法人のお客様へ</a></li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>インフォメーション</h4>
+                            <ul>
+                                <li><a href="#">会社案内</a></li>
+                                <li><a href="#">お知らせ</a></li>
+                                <li><a href="#">採用情報</a></li>
+                                <li><a href="#">お問い合わせ</a></li>
+                                <li><a href="#">個人情報保護方針</a></li>
+                                <li><a href="#">会員サービス利用規約</a></li>
+                                <li><a href="#">特定商法利用規約に基づく表示</a></li>
+                                <li><a href="#">免責事項</a></li>
+                                <li><a href="#">著作権について</a></li>
+                                <li><a href="#">広告媒体のご案内</a></li>
+                                <li><a href="#">アフィリエイトのご案内</a></li>
+                                <li><a href="#">カスタマーハラスメントに対する基本方針</a></li>
+                                <li><a href="#">Kinokuniya in the world</a></li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>ジャンル</h4>
+                            <ul>
+                                <li><a href="#">おすすめの本</a></li>
+                                <li><a href="#">和書</a></li>
+                                <li><a href="#">電子書籍</a></li>
+                                <li><a href="#">雑誌・マガジン</a></li>
+                                <li><a href="#">DVD・CD</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.inner -->
+            </div><!-- /.footer-top -->
+
+            <!-- 下段：白背景 -->
+            <div class="footer-bottom">
+                <div class="inner">
+                    <div class="footer-logos">
+                        <img src="top-images/footer/privacymark.png" alt="プライバシーマーク">
+                        <img src="top-images/footer/ABJ.png" alt="ABJマーク">
+                    </div>
+
+                    <p class="company-info">
+                        東京都公安委員会　古物商許可番号 304366100901<br>
+                        株式会社 紀伊國屋書店　本社：東京都新宿区新宿3-17-7
+                    </p>
+
+                    <p class="disclaimer">
+                        このウェブサイトの内容の一部または全部を無断で複製、転載することを禁じます。<br>
+                        当社店舗一覧等を掲載されるサイトにおかれましては、最新の情報を当ウェブサイトにてご参照のうえ常時メンテナンスください。<br>
+                        Copyright © KINOKUNIYA COMPANY LTD.
+                    </p>
+                </div><!-- /.inner -->
+            </div><!-- /.footer-bottom -->
+        </footer>
+    </body>
+</html>
