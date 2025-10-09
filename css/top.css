@@ -1,0 +1,1709 @@
+body{
+  margin: 0px;
+  padding-top: 120px;  /* ヘッダーの高さ分 (例: 120px) */
+}
+
+header {
+  background-color: #fff;
+  z-index: 1000;
+  margin-top: 0;          /* ← 余白は消す */
+  position: fixed;        /* ← 画面に固定 */
+  top: 0;                 /* ← 上から0 */
+  left: 0;
+  width: 100%;            /* ← 横幅いっぱい */
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 左・中央・右の3分割 */
+  align-items: center;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 10px 20px;
+}
+
+.logo {
+  grid-column: 2; /* 真ん中に配置 */
+  text-align: center;
+}
+
+.logo img{
+  max-width: 200px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px; /* 検索とアイコンの間隔 */
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid #003F98;
+  border-radius: 20px;
+  padding: 2px 10px;
+  text-align: right;
+}
+
+.search-form input {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+}
+
+
+
+.menu-btn {
+  display: none; /* PCでは非表示 */
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #003F98;
+  cursor: pointer;
+}
+
+/* モバイル用オーバーレイ */
+/* オーバーレイ全体 */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #003F98;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start; /* ← 上から並べる */
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;  /* ← 縦スクロール可能に */
+  -webkit-overflow-scrolling: touch; /* ← iOSで滑らかスクロール */
+  padding: 60px 20px; /* 上に余白、横にも少し */
+  box-sizing: border-box;
+}
+
+/* オーバーレイのリンク */
+.overlay a {
+  font-size: 20px;
+  color: #fff;           /* 白文字 */
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 15px 40px;
+  text-align: center;
+  transition: all 0.3s ease; /* スムーズな反転 */
+  background: none;
+}
+
+/* メニューリスト */
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;           /* ← 幅いっぱい */
+  max-width: 400px;      /* ← でも広すぎないように制御 */
+  text-align: center;
+}
+
+/* ホバー時に反転 */
+.overlay a:hover {
+  background: rgba(255,255,255,0.2); /* 薄い白背景とか */
+  color: #fff; /* 白文字のまま */
+}
+
+
+/* overlayが開いたとき */
+.overlay.active {
+  display: flex;  /* ← flexで表示 */
+}
+
+.overlay .close {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 3000;
+  background: none;       /* ← 背景を消す */
+  border: none;           /* ← 枠線（破線）を消す */
+  outline: none;          /* ← フォーカス枠を消す */
+}
+
+
+/* アコーディオン（ジャンルのサブメニュー） */
+.overlay .submenu {
+  padding-left: 20px;
+}
+
+.overlay .submenu.active {
+  display: block;
+}
+
+.overlay ul,
+.overlay li,
+.overlay a {
+  text-align: center;   /* ← 全部中央揃え */
+  width: 100%;          /* ← 幅を揃える */
+  box-sizing: border-box;
+}
+
+/* サブメニュー */
+.overlay .submenu {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  max-height: 0;              /* ← 初期状態は高さゼロ */
+  overflow: hidden;           /* はみ出し隠す */
+  transition: max-height 0.4s ease; /* ← ぬめっと */
+}
+
+/* 開いたとき */
+.overlay .submenu.active {
+  max-height: 500px;          /* ← 想定より大きめにしておく */
+}
+
+.overlay .submenu li a {
+  display: block;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;   /* ← サブメニューも中央揃え */
+}
+
+
+.nav-bar-mobile .search-form {
+  flex: none;
+  width: 60%;   /* ← 画面幅の60%くらいに */
+  max-width: 200px; /* ← 長すぎ防止 */
+}
+
+/* モバイル専用アイコン */
+.icon-area {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.icon-mobile a {
+  display: flex;
+  flex-direction: column; /* ← 縦並びにする */
+  align-items: center;    /* ← 中央揃え */
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+}
+
+.icon-mobile img {
+  width: 24px;
+  height: auto;
+  margin-bottom: 3px; /* アイコンと文字の間に余白 */
+}
+
+/* スマホ版 */
+@media screen and (max-width: 768px) {
+body {
+    padding-top: 60px; /* ヘッダー高さを小さめに調整 */
+  }
+
+  .header-inner {
+    grid-template-columns: auto 1fr auto; /* 左：ハンバーガー、中央：ロゴ、右：検索 */
+    align-items: center;
+    margin: 10px auto;
+  }
+
+  .logo {
+    grid-column: 2;
+    text-align: center;
+  }
+
+  .logo img {
+    max-width: 150px; /* ロゴが潰れないよう調整 */
+  }
+
+  .nav-right {
+    display: none; /* 検索フォームは一旦非表示でもOK（狭い画面だと潰れる） */
+  }
+
+  .menu-btn {
+    display: block; /* スマホで表示 */
+    z-index: 1000;  /* メニューより上に置く */
+  }
+
+
+}
+  
+
+  /* スマホ用 */
+@media screen and (max-width: 768px) {
+  ul.ddmenu {
+    display: block !important;   /* ← これで縦並びを強制 */
+    margin: 0;
+    padding: 60px 0 0;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background: #003F98;
+    transition: left 0.3s ease;
+    z-index: 2000;
+  }
+
+  ul.ddmenu.active {
+    left: 0; /* ← 開いた時 */
+  }
+
+  ul.ddmenu li {
+    border-bottom: 1px solid #fff;
+    width: 100%;
+  }
+
+  ul.ddmenu li a {
+    display: block;
+    padding: 15px;
+    text-align: center;  /* ← 真ん中に */
+    color: #fff;
+    white-space: nowrap;  /* ← これ追加！折り返さない */
+  }
+
+    ul.ddmenu a:hover {
+    background-color: transparent !important; /* hover時も変化させない */
+    color: #fff !important;                  /* 白文字固定 */
+  }
+
+    .nav-bar-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #003F98;   /* 青帯 */
+    padding: 10px 20px;
+    color: #fff;
+  }
+
+  /* 検索フォーム（白抜き） */
+  .nav-bar-mobile .search-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin: 0 10px;
+  }
+
+  .nav-bar-mobile .search-form input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px 10px;
+  }
+
+  .nav-bar-mobile .search-form button {
+    border: none;
+    background: none;
+    color: #003F98;
+    font-size: 18px;
+  }
+
+  /* アイコンエリア */
+  .nav-bar-mobile .icon-area {
+    display: flex;
+    gap: 15px;
+  }
+
+  .nav-bar-mobile .icon a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  .nav-bar-mobile .icon img {
+    width: 24px;
+    margin-bottom: 3px;
+  }
+}
+
+/* PCでは表示しない */
+.nav-bar-mobile {
+  display: none;
+}
+
+h2 {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;  /* 文字と線の間隔 */
+  font-size: 18px;
+  color: #003F98;
+}
+
+h2::before,
+h2::after {
+  content: "";
+  flex: 0 0 300px;            /* ← 線を自動伸縮 */
+  height: 1px;
+  background: #003F98;
+}
+
+.subtitle{
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: -40px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;  /* 高さも揃える */
+  gap: 30px;            /* ← 検索フォームとアイコンの間の余白 */
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.human img,
+.cart img {
+  width: 32px;   /* ← 適度なサイズ */
+  height: auto;  /* 比率を維持 */
+  margin-bottom: 5px; /* 文字との余白 */
+}
+
+.human a {
+  display: flex;
+  flex-direction: column; /* ← 縦並び */
+  align-items: center;    /* ← 中央揃え */
+  text-decoration: none;  /* 下線消す */
+  color: #003F98;         /* 好きな色 */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cart a {
+  display: flex;
+  flex-direction: column; /* ← 縦並び */
+  align-items: center;    /* ← 中央揃え */
+  text-decoration: none;  /* 下線消す */
+  color: #003F98;         /* 好きな色 */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*moreボタン*/
+.c-btn,
+.c-bnr,
+.c-txt {
+  cursor: pointer;
+  transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+}
+ 
+/*ボタン基本コード*/
+.c-btn {
+  background: #003F98;
+  border: 2px solid #003F98;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px 40px;
+  text-align: center;
+
+  display: block;
+  width: fit-content;
+
+  margin: 20px 100px 0 auto;  /* 上 右 下 左 → 右を100px空ける */
+}
+
+.c-btn:hover {
+  background: #fff;
+  color: #003F98;
+}
+
+.c-btn.reverse:hover {
+  background: #fff;
+  color: #003F98;
+}
+
+.human img {
+  margin-bottom: 5px; /* アイコンと文字の間 */
+}
+/* -------------------- */
+/* ▼メニューバーの装飾 */
+/* -------------------- */
+ul.ddmenu {
+   margin-top: 30px;              /* メニューバー外側の余白(ゼロ) */
+   padding: 0px 0px 0px 15px; /* メニューバー内側の余白(左に15px) */
+   background-color: #003F98; /* バーの背景色(濃い赤色) */
+   display: flex;
+    width: 100%; 
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* -------------------------- */
+/* ▼メインメニュー項目の装飾 */
+/* -------------------------- */
+/* ▼ PC用（デフォルト） */
+ul.ddmenu {
+  margin-top: 30px;
+  padding: 0 0 0 15px;
+  background-color: #003F98;
+  display: flex;                /* PCは横並び */
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+ul.ddmenu li {
+  width: 125px;
+  list-style: none;
+  position: relative;
+  line-height: 0%;
+}
+
+ul.ddmenu a {
+  background-color: #003F98;
+  color: white;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+ul.ddmenu a:hover {
+  background-color: #fff;
+  color: #003F98;
+}
+
+/* ▼サブメニューは、とりあえず非表示にしておく */
+ul.ddmenu ul {
+   display: none;         /* ★5:非表示にする */
+}
+
+/* -------------------- */
+/* ▼サブメニューの装飾 */
+/* -------------------- */
+ul.ddmenu ul {
+   display: none;       /* ★1:標準では非表示にする */
+   margin: 0px;         /* ★2:サブメニュー外側の余白(ゼロ) */
+   padding: 0px;        /* ★3:サブメニュー内側の余白(ゼロ) */
+   position: absolute;  /* ★4:絶対配置にする */
+}
+
+/* ---------------------------------- */
+/* ▼サブメニューがある場合に開く処理 */   /* ※サブメニューが1階層しか存在しない場合の記述 */
+/* ---------------------------------- */
+ul.ddmenu li:hover ul {
+   display: block;      /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+/* 行間を狭める */
+.submenu a.narrow-line {
+  line-height: 1.2em !important;  /* 通常より狭める */
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.search-form button {
+  background: transparent; /* 背景を透明に */
+  border: none;            /* 枠を消す */
+  outline: none;           /* フォーカス時の枠を消す */
+  color: #003F98;          /* アイコンの色 */
+  font-size: 18px;         /* アイコンサイズ */
+  cursor: pointer;
+  margin-left: -10px; /* ← 好きな数値に変更（例：8px） */
+
+  /* ブラウザ依存のデフォルトリセット */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+
+/*フォーム全体*/
+#form2{
+  display: flex;
+  justify-content: center; 	
+  border: solid 2px #003F98;
+  max-width: 300px;
+  height:50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  }
+/*入力フォーム*/
+#sbox3{ 
+  width:240px ;
+  height: 30px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  border-radius: initial #003F98;
+  background:transparent;
+  border-radius:20px ;
+  outline:0;
+}
+/*検索ボタン*/
+#sbtn4 {
+  width: 40px;
+  height: 40px;
+  background: transparent; /* ← 背景を透明に */
+  border: none;            /* ← 枠線も消す */
+  color: #003F98;          /* アイコンの色 */
+  font-size: 18px;         /* アイコンの大きさ */
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* スライド */
+
+/* slick が勝手に入れる余白を打ち消す */
+.slick-slide {
+  margin: 0 !important;
+}
+
+.slick-list {
+  margin: 0 !important;
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 0 !important;
+}
+
+.slider-4 {
+  margin: 0;
+  padding: 10px;      
+  list-style: none; /* ← liの●も消す */
+}
+
+.slider4-wrap {
+  width: 100%;
+  margin-top: 100px;
+  position: relative;
+}
+
+/* slick-track を中央寄せ */
+.slider-4 .slick-track {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+}
+
+/* fade:true のときは slick が absolute を付けるので上書き */
+.slider-4 .slick-slide {
+  position: relative !important;
+  width: 100% !important;       /* 画面幅いっぱいに広げる */
+  text-align: center !important;
+}
+
+.slider-4 img {
+  display: block;
+  margin: 0 auto;       /* 中央寄せ */
+  max-width: 1000px;    /* ← デザインに合わせた最大幅（例：1000px） */
+  width: auto;          /* ← 画像本来の比率 */
+  height: auto;
+}
+
+
+/* 中央寄せ（オリジナル比率を維持） */
+.slider-4 .slick-slide img {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.progress_bar {
+  width: 0 !important;   /* ← 実質非表示 */
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important; /* ← 完全に透明 */
+  pointer-events: none;  /* ← クリック無効化 */
+}
+
+.dots-4 .slick-dots {
+  text-align: center;
+}
+
+.dots-4 .slick-dots li {
+  display: inline-block;
+}
+
+.dots-4 .slick-dots button {
+  width: 18px;   /* ← 丸の直径を大きくする */
+  height: 18px;  /* ← 丸の直径を大きくする */
+  margin: 6px;
+  background: #bcbcbc;
+  border-radius: 50%;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.dots-4 .slick-dots .slick-active button {
+  background: #003F98; /* アクティブの色 */
+}
+
+
+
+
+.progress_bar .bar {
+  width: 0%;
+  height: 4px;
+  background: #0a467d;
+}
+
+
+.slide-items {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+.slide-items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.recomend{
+  margin-top: 100px;
+}
+
+.eventitems{
+  margin-top: 50px;
+
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;         /* 折り返しOK */
+  gap: 70px;               /* 間隔 */
+  justify-content: center; /* 中央寄せ */
+  margin-top: 100px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px;   /* 最低200pxで可変 */
+  max-width: 220px;  /* 最大幅 */
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;   /* 縦長に統一 */
+  object-fit: contain;   /* トリミングせず全部表示 */
+  background: #f5f5f5;
+  padding: 5px;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーション */
+}
+
+.item img:hover {
+  transform: scale(1.05);             /* 5%拡大 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* 影を追加 */
+}
+.item .title {
+  min-height: 2.8em;   /* 2行分の高さ */
+  line-height: 1.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;       /* 最大2行 */
+  -webkit-box-orient: vertical;
+  margin-top: 8px;
+}
+
+.item .price {
+  margin-top: auto;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* イベント */
+.eventitems {
+  display: flex;
+  flex-wrap: wrap;      /* 折り返しOK */
+  gap: 100px;            /* カード間の余白 */
+  justify-content: center;
+}
+
+.eventitem {
+  width: 180px;         /* PC用カード幅 */
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+.eventitem .eventtitle {
+  font-size: 14px;
+  line-height: 1.4em;
+  min-height: 2.8em;    /* 2行分の高さを固定 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* 最大2行で省略 (…) */
+  -webkit-box-orient: vertical;
+}
+
+.item img,
+.eventitem img {
+  width: 100%;
+  height: 240px;        /* 高さは調整OK */
+  object-fit: contain;  /* 切り取らずに全部表示 */
+  background: #f5f5f5;  /* ← 統一 */
+  padding: 5px;         /* 中の余白（おすすめの本と同じに） */
+  border-radius: 4px;   /* 角丸（好みで） */
+}
+
+/* --- スマホ（幅480px以下）のとき --- */
+@media screen and (max-width: 480px) {
+  
+  .items {
+    gap: 20px; /* アイテム同士の間隔も調整できる */
+    margin-top: -5px;
+  }
+
+  .item {
+    flex: 0 1 calc(50% - 12px); /* ← gapに合わせて計算を調整 */
+    max-width: calc(50% - 12px);
+    padding-top: 10px;
+  }
+
+ .item img {
+  display: block;     /* inline要素の余白を消す */
+  margin: 0 auto;     /* 左右を自動で均等にする */
+  max-width: 70%;    /* 親幅を超えないように */
+  height: auto;
+  object-fit: contain;
+}
+
+.item .title {
+  font-size: 12px;
+  line-height: 1.4em;
+  -webkit-line-clamp: 3;   /* ← 2行 → 3行に変更 */
+  min-height: 4.2em;       /* ← 行数 × 行間（1.4em × 3行） */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  margin-top: 8px;
+  padding: 0px 10px;
+}
+  
+  .item .price {
+    font-size: 13px;
+    padding-left: 20px;
+  }
+
+    .progress_bar {
+    margin: -10px auto 0;   /* ← 上だけ -10px に変更して、画像に近づける */
+    max-width: 360px;       /* ← 画像に合わせて幅も調整 */
+  }
+
+  .subtitle{
+    margin-bottom: 20px;
+  }
+
+  h2{
+    margin-top: 100px;
+  }
+
+  h2::before,
+  h2::after {
+  content: "";
+  flex: 0 0 80px;            /* ← 線を自動伸縮 */
+  height: 1px;
+  background: #003F98;
+}
+
+.c-btn {
+  font-size: 12px;
+  background: #003F98;
+  border: 2px solid #003F98;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 20px;
+  text-align: center;
+
+  display: block;
+  width: fit-content;
+
+  margin: 20px auto 100px; /* 上20px・左右auto（中央寄せ）・下50px */
+}
+
+.news-items {
+  display: grid;
+  gap: 20px;
+  margin-top: 50px;
+}
+}
+
+/*お知らせ*/
+.news {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative; /* relativeにしてボタンを外に配置できるようにする */
+}
+
+/* news-items だけ max-width の中に収める */
+.news-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+}
+
+
+
+
+.news-item {
+  display: flex;
+  border: 1px solid #003F98;
+  padding: 15px;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  align-items: stretch; 
+  height: 100px;   /* ← 高さを固定（必要に応じて調整） */
+}
+
+.news-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.news-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.news-content {
+  display: flex;
+  align-items: flex-start;  /* ← これで左寄せ＆幅が勝手に伸びない */
+  flex-direction: column;
+  justify-content: space-between; /* 上に本文、下に日付 */
+  flex: 1;
+}
+
+.news-title {
+  display: inline-block;   /* ← 文字分だけ背景が付く */
+  background-color: #003F98;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 8px;
+  margin: 0 0 5px;
+}
+
+.news-body {
+  font-size: 13px;
+  line-height: 1.5em;
+  flex-grow: 1; /* 本文を可変領域にする */
+  margin: 0;
+}
+
+.news-date {
+  font-size: 12px;
+  color: #666;
+  margin-top: auto;     
+  align-self: flex-end;  /* ←これで右下固定 */
+}
+
+
+/* フッター */
+
+/* 共通の中央寄せ用 */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;  /* ← 上と同じ値をここで管理 */
+}
+
+footer {
+  margin-top: 100px;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- 上段（青背景） --- */
+.footer-top {
+  background: #003F98;
+  color: #fff;
+  padding: 40px 0;
+  width: 100%;  /* ←全幅 */
+}
+
+/* footer用 */
+.footer-top .inner {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; /* 左寄せ */
+  gap: 30px;
+  margin-left: 200px;
+}
+
+.sns-icons a {
+  display: inline-block;
+  margin: 0 8px;
+}
+.sns-icons img {
+  width: 28px;
+  height: 28px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: flex-start; /* ← 左寄せ */
+  gap: 80px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links ul li {
+  margin-bottom: 6px;
+}
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-links ul li a:hover {
+  text-decoration: underline;
+}
+
+/* --- 下段（白背景） --- */
+.footer-bottom {
+  background: #fff;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 2px solid #eee;
+  width: 100%;  /* ←全幅 */
+}
+
+.footer-logos img {
+  height: 40px;
+  margin: 0 10px;
+}
+
+.footer-bottom .company-info {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #333;
+}
+
+.footer-bottom .disclaimer {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #555;
+}
+
+.sns-icons {
+  display: flex;             /* 横並びにする */
+  justify-content: center;   /* 中央寄せ */
+  gap: 12px;                 /* アイコン間の余白（お好みで調整） */
+  margin-top: 10px;          /* 上下の余白（必要なら） */
+}
+
+.sns-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;   /* アイコン枠のサイズ */
+  height: 32px;
+}
+
+.sns-icons img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* X と Instagram だけ拡大 */
+.sns-icons img[alt="X"],
+.sns-icons img[alt="Instagram"] {
+  transform: scale(1.5); /* 20% 拡大 */
+}
+
+
+
+
+/*2ページ目*/
+
+.breadcrumb {
+  font-size: 13px;
+  margin: 100px 200px 20px; /* 上 右 下 左 */
+  padding: 0 20px;
+  position: relative;
+  z-index: 500;
+  border-bottom: 1px solid #ddd;
+}
+
+.breadcrumb ul {
+  display: flex;
+  flex-wrap: wrap;             /* 折り返しOK */
+  justify-content: flex-start; /* 常に左寄せ */
+  gap: 6px;                    /* 要素の間隔 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+  color: #555;
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  color: #003F98;
+  white-space: nowrap;   /* テキストは折り返さない */
+}
+
+.breadcrumb li + li::before {
+  content: "＞";
+  margin: 0 6px;
+  color: #aaa;
+}
+
+.product-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.product-image img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #000;
+}
+
+.product-quantity {
+  margin: 20px 0;
+}
+
+.product-quantity input {
+  width: 50px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.product-buttons {
+  display: flex;
+  flex-wrap: wrap;  /* 小さい画面で折り返し */
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-btn {
+  border: 2px solid #003F98;
+  background: #ffffff;
+  color: #003F98;
+}
+
+.cart-btn:hover {
+  background: #003F98;
+  color: #fff;
+}
+
+.favorite-btn {
+  border: 2px solid #e74c3c;
+  background: #fff;
+  color: #e74c3c;
+}
+
+.favorite-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.book-detail {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* 出版社 */
+.book-detail .publisher {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* 概要 */
+.book-detail .summary {
+  margin-bottom: 20px;
+}
+
+/* 商品コードなど */
+.book-info {
+  display: flex;
+  justify-content: flex-start;  /* 左寄せ */
+  gap: 40px;                    /* ← ここで余白を指定 */
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* --- スマホ（幅768px以下） --- */
+@media screen and (max-width: 768px) {
+  .product-container {
+    flex-direction: column; /* 縦並び */
+    align-items: center;
+    gap: 20px;
+  }
+
+  .product-image img {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .product-info {
+    width: 100%;
+  }
+
+  .product-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%; /* ボタンを横いっぱい */
+    text-align: center;
+  }
+
+  .progress_bar {
+  width: 100%;             /* まずは100% */
+  max-width: 360px;       /* ← 上の画像と同じ幅に制限 */
+  margin: 0 auto;          /* 中央寄せ */
+  background: #eaeaea;
+  border-radius: 4px;
+  } 
+}
+
+h2.customer{
+  color: #000;
+  margin-top: 200px;
+  margin-bottom: -50px;
+  margin-left: 180px;
+  justify-content: flex-start; /* ← 左寄せにする */
+  text-align: left;            /* ← 念のため左寄せ */
+}
+
+h2.customer::before,
+h2.customer::after {
+  content: none;  /* 左右の線を消す */
+}
+
+.items-customer{
+  display: flex;
+  flex-wrap: wrap;         /* 折り返しOK */
+  gap: 40px;               /* 間隔 */
+  justify-content: center; /* 中央寄せ */
+  margin-top: 100px;
+}
+
+.item-customer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;   /* 画像とタイトルは中央揃え */
+  flex: 1 1 200px;
+  max-width: 220px;
+  text-align: center;
+}
+
+/* 画像を揃える */
+.item-customer img {
+  width: 100%;
+  height: 200px;           /* ← 今のまま固定 */
+  object-fit: contain;
+  background: #f5f5f5;
+  padding: 5px;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;       /* ← 追加 */
+  transform: translateZ(0);     /* ← 追加 */
+}
+
+.item-customer img:hover {
+  transform: scale(1.05) translateZ(0); /* ← hover時も */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* タイトルは高さを揃える */
+.item-customer .title {
+  min-height: 3em;         /* 2行分くらいの高さを確保 */
+  line-height: 1.4;
+  margin: 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* 最大2行 */
+  -webkit-box-orient: vertical;
+  text-align: left;
+}
+
+/* 値段は一番下に固定 */
+.item-customer .price {
+  margin-top: auto;      /* 下に固定 */
+  text-align: left;      /* ← 左寄せ */
+  width: 100%;           /* ← 親幅いっぱいにして効かせる */
+  font-weight: bold;
+}
+
+/* ログインページ */
+.login-page {
+  max-width: 400px;
+  margin: 120px auto;  /* ヘッダー分下げる */
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.login-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.register-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #003F98;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.login-form .note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+.form-links {
+  margin-bottom: 20px;
+}
+
+.form-links a {
+  font-size: 13px;
+  color: #003F98;
+  text-decoration: none;
+}
+
+.form-links a:hover {
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #003F98;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #002970;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-right {
+    display: none; /* PC用を消す */
+  }
+
+  .nav-bar-mobile {
+    display: flex;   /* モバイル用を表示 */
+    justify-content: space-between;
+    align-items: center;
+    background: #003F98; /* 青帯 */
+    padding: 10px 20px;
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* PC用ナビを消す */
+  .nav-right {
+    display: none !important;  /* ← 強制で消す */
+  }
+
+  /* PC用グローバルナビも消す */
+  ul.ddmenu {
+    display: none !important;  /* ← モバイルでは青帯のみに */
+  }
+
+  /* モバイル用ナビを表示 */
+  .nav-bar-mobile {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    background: #003F98;
+    padding: 10px 20px;
+    color: #fff;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 60px; /* モバイル用の余白 */
+  }
+
+  .nav-right {
+    display: none; /* ← PC用の検索＋アイコンだけ消す */
+  }
+
+  ul.ddmenu {
+    display: none !important; /* ← PC用グローバルナビ非表示 */
+  }
+
+  .nav-bar-mobile {
+    display: flex !important; /* ← モバイル用ナビを表示 */
+  }
+}
+
+/* 共通 */
+.search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid #003F98;
+  border-radius: 20px;
+  padding: 2px 10px;
+}
+
+/* 入力欄 */
+.search-form input {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+}
+
+/* PC用 */
+.nav-right .search-form {
+  width: 200px; /* PCでは長め */
+}
+
+/* モバイル用 */
+.nav-bar-mobile .search-form {
+  width: 120px;  /* スマホでは短め */
+  max-width: 150px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .nav-bar-mobile {
+    display: flex;
+    align-items: center;      /* ← 中央寄せ */
+    background: #003F98;
+    padding: 10px 15px;
+    color: #fff;
+    gap: 10px;                /* 検索バーとアイコンの間に余白 */
+  }
+
+  /* 検索フォーム */
+  .nav-bar-mobile .search-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;              /* ← 画面幅の70%に */
+    max-width: 220px;        /* ← 伸びすぎ防止 */
+    background: #fff;
+    border-radius: 20px;
+    padding: 2px 6px;
+    margin: 0 auto;          /* ← 横中央に配置 */
+  }
+
+  .nav-bar-mobile .search-form input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    background: transparent;
+  }
+
+  .nav-bar-mobile .search-form button {
+    flex: 0 0 auto;
+    border: none;
+    background: none;
+    color: #003F98;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+
+  /* アイコンエリア */
+  .nav-bar-mobile .icon-area {
+    display: flex;
+    gap: 20px;
+    justify-content: center;  /* ← 真ん中に寄せる */
+    align-items: center;
+    width: 100%;              /* ← 全幅で均等配置 */
+  }
+  .news {
+    padding: 16px 20px;  /* ← これで上書き成功 */
+  }
+
+    .news-items {
+    grid-template-columns: 1fr; /* ← 1列にする */
+  }
+
+    .footer-top .inner {
+    align-items: center; /* ← モバイルだけ中央寄せ */
+    margin-left: 0;      /* ← 左の余白をリセット */
+    gap: 10px;
+  }
+
+  .sns-icons{
+    gap: 0px;
+  }
+
+  .sns-icons img {
+  width: 35px;
+  height: 35px;
+}
+
+.footer-links{
+  gap: 40px;
+  padding-left: 30px;
+}
+
+  .breadcrumb {
+    margin: 20px;
+    font-size: 12px;
+  }
+
+  .breadcrumb ul {
+    flex-wrap: wrap;             /* 折り返しOK */
+    justify-content: flex-start; /* 左寄せ */
+    gap: 4px;                    /* アイテム間に少し余白 */
+  }
+
+  .breadcrumb li {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;           /* 矢印とテキストは同じ行に */
+  }
+
+  .breadcrumb li a {
+    white-space: normal;         /* ← 折り返し許可 */
+    word-break: keep-all;        /* ← 日本語は自然に折れる */
+  }
+
+  .breadcrumb li + li::before {
+    content: "＞";
+    margin: 0 4px;
+    color: #aaa;
+    flex-shrink: 0;              /* 矢印が潰れないように固定 */
+  }
+
+   .breadcrumb {
+    margin-top: 100px; /* スマホ用に低め */
+  }
+
+  .book-info {
+    margin-top: 5px;
+    flex-direction: column; /* ← 縦並びに切り替え */
+    gap: 8px;               /* 行間狭める */
+  }
+
+   h2.customer {
+    margin-left: 0;          /* ← 左余白リセット */
+    text-align: center;      /* ← 中央揃え */
+    justify-content: center; /* ← flexの中央揃え */
+  }
+
+    .items-customer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ← 2列 */
+    gap: 20px;  /* アイテム間の余白を少し狭める */
+    justify-items: center; /* 各アイテムを中央寄せ */
+  }
+
+   .item-customer {
+    max-width: 160px; /* ← お好みで幅を調整 */
+  }
+
+  .login-form input{
+    width: 95%;
+  }
+
+  .register-link{
+    margin-bottom: 50px;
+  }
+
+  .column li{
+    padding:3px;
+  }
+}
+
+/* === PCだけ hover 有効化 === */
+@media (hover: hover) and (pointer: fine) {
+  /* リンク反転 */
+  .overlay a:hover,
+  ul.ddmenu a:hover {
+    background: #fff;
+    color: #003F98;
+  }
+
+  /* PCのドロップダウン */
+  ul.ddmenu li:hover ul {
+    display: block;
+  }
+
+  /* 商品カードやボタン */
+  .item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .news-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .c-btn:hover {
+    background: #fff;
+    color: #003F98;
+  }
+}
+
+/* === モバイルでは hover 全無効化 === */
+@media (hover: none) and (pointer: coarse) {
+  a:hover, button:hover,
+  .overlay a:hover, ul.ddmenu a:hover,
+  .item img:hover, .news-item:hover, .c-btn:hover {
+    background: inherit !important;
+    color: inherit !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  /* サブメニュー：ホバー時だけ白背景＋青文字 */
+  .overlay .submenu li a:hover {
+    background: #fff !important;
+    color: #003F98 !important;
+  }
+}
+
+/* slickドットのサイズ調整 */
+.slider-4 .slick-dots li button {
+  width: 12px !important;
+  height: 12px !important;
+  margin: 6px !important;
+  background: #bcbcbc !important;
+  border-radius: 50% !important;
+  border: none !important;
+  transition: background 0.3s ease;
+}
+
+.slider-4 .slick-dots li.slick-active button {
+  background: #003F98 !important;
+}
+
+/* slickデフォルトの黒いドット（擬似要素）を消す */
+.slider-4 .slick-dots li button::before {
+  content: none !important; /* ← 擬似要素ごと消す */
+}
